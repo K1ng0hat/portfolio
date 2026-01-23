@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-black: #000000;
+  --terminal-green: #00ff00;
+  --code-yellow: #ffd700;
+  --text-gray: #a0a0a0;
+  --border-color: #333;
+}
+
+body {
+  font-family: 'Fira Code', monospace;
+  background-color: var(--bg-black);
+  color: var(--code-yellow);
+  overflow-x: hidden;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+/* Cursor parpadeante */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 20px;
+  background-color: var(--code-yellow);
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+/* Efecto de matrix/lluvia de código */
+@keyframes rain {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--code-yellow);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--terminal-green);
+}
+
+/* Animaciones de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 2px 2px var(--terminal-green), -2px -2px var(--code-yellow);
+  }
+  25% {
+    text-shadow: -2px -2px var(--terminal-green), 2px 2px var(--code-yellow);
+  }
+  50% {
+    text-shadow: 2px -2px var(--terminal-green), -2px 2px var(--code-yellow);
+  }
+  75% {
+    text-shadow: -2px 2px var(--terminal-green), 2px -2px var(--code-yellow);
+  }
+  100% {
+    text-shadow: 2px 2px var(--terminal-green), -2px -2px var(--code-yellow);
+  }
+}
