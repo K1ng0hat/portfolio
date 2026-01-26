@@ -1,15 +1,14 @@
 <template>
   <div class="app-container">
-    <!-- Efecto de lluvia de código en el fondo -->
     <div class="code-rain">
       <div v-for="i in 20" :key="i" class="rain-column" :style="{ left: `${i * 5}%`, animationDelay: `${i * 0.1}s` }">
         <span v-for="char in codeChars" :key="char">{{ char }}</span>
       </div>
     </div>
 
-    <!-- Contenido principal -->
+   
     <div class="content">
-      <!-- Header/Hero Section -->
+      
       <header class="hero">
         <div class="terminal-window">
           <div class="terminal-header">
@@ -21,10 +20,30 @@
             <p class="terminal-line">
               <span class="prompt">$</span> whoami
             </p>
+            <div class="whoami-container">
             <p class="terminal-line typing-effect">
               <span ref="nameTyping">{{ displayedName }}</span>
               <span class="cursor" v-if="isTyping"></span>
             </p>
+
+            <div
+              class="profile-wrapper"
+              :class="{ flipped: isFlipped }"
+              @click="toggleFlip"
+            >
+              <div class="profile-inner">
+                <!-- Front -->
+                <div class="profile-front">
+                  <img src="../public/sounds/profile.jpg" alt="Profile" />
+                </div>
+
+                <!-- Back -->
+                <div class="profile-back">
+                  <span>&lt;/&gt;</span>
+                </div>
+              </div>
+            </div>
+          </div>
             <p class="terminal-line">
               <span class="prompt">$</span> cat role.txt
             </p>
@@ -35,32 +54,30 @@
         </div>
       </header>
 
-      <!-- Skills Section -->
+      
       <SkillsSection @skill-hover="playSound('hover')" @skill-click="playSound('click')" />
 
-      <!-- Projects Section -->
+   
       <ProjectsSection @project-click="playSound('select')" />
 
-      <!-- Contact Section -->
       <section class="contact-section">
         <h2 class="section-title">
           <span class="comment">// Contacto</span>
         </h2>
         <div class="contact-links">
-          <a href="#" class="contact-link" @click="playSound('click')">
+          <a href="https://github.com/K1ng0hat" class="contact-link" @click="playSound('click')">
             <span class="bracket">[</span> GitHub <span class="bracket">]</span>
           </a>
-          <a href="#" class="contact-link" @click="playSound('click')">
+          <a href="https://www.linkedin.com/in/adrian-molano-6a873a30a/" class="contact-link" @click="playSound('click')">
             <span class="bracket">[</span> LinkedIn <span class="bracket">]</span>
           </a>
-          <a href="#" class="contact-link" @click="playSound('click')">
+          <a href="mailto:adrianmolanonavarro@gmail.com" class="contact-link" @click="playSound('click')">
             <span class="bracket">[</span> Email <span class="bracket">]</span>
           </a>
         </div>
       </section>
     </div>
 
-    <!-- Audio elements (puedes agregar tus propios archivos de audio) -->
     <audio ref="hoverSound" src="/sounds/hover.mp3" preload="auto"></audio>
     <audio ref="clickSound" src="/sounds/click.mp3" preload="auto"></audio>
     <audio ref="selectSound" src="/sounds/select.mp3" preload="auto"></audio>
@@ -74,8 +91,8 @@ import ProjectsSection from './components/ProjectsSection.vue'
 import { useSoundEffects } from './composables/useSoundEffects'
 
 const codeChars = ['0', '1', '{', '}', '<', '>', '/', '*', '+', '-', '=', ';', '(', ')', '[', ']']
-const fullName = 'Tu Nombre Aquí'
-const role = 'Full Stack Developer | Vue.js Expert'
+const fullName = 'Adrian Molano'
+const role = 'Mid Software Engineer | Full Stack Developer Expert'
 
 const displayedName = ref('')
 const isTyping = ref(true)
@@ -95,6 +112,14 @@ onMounted(() => {
     }
   }, 100)
 })
+
+const isFlipped = ref(false)
+
+const toggleFlip = () => {
+  isFlipped.value = !isFlipped.value
+  playSound('click')
+}
+
 </script>
 
 <style scoped>
@@ -271,4 +296,64 @@ onMounted(() => {
     align-items: center;
   }
 }
+
+/* Whoami layout */
+.whoami-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+/* Profile flip container */
+.profile-wrapper {
+  width: 120px;
+  height: 120px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.profile-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+}
+
+.profile-wrapper.flipped .profile-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front & back faces */
+.profile-front,
+.profile-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  border: 3px solid var(--code-yellow);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+/* Front image */
+.profile-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Back side */
+.profile-back {
+  background: rgba(20, 20, 20, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--terminal-green);
+  font-size: 32px;
+  transform: rotateY(180deg);
+}
+
 </style>

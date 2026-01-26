@@ -45,18 +45,37 @@
 
     <!-- Comando interactivo -->
     <div class="interactive-command">
-      <p class="command-line">
-        <span class="prompt">$</span> ls -la skills/
-      </p>
-      <div class="skills-list">
-        <p v-for="skill in skills" :key="skill.name" class="skill-item">
-          <span class="permissions">-rw-r--r--</span>
-          <span class="owner">dev</span>
-          <span class="date">Jan 22 2026</span>
-          <span class="filename">{{ skill.name }}.js</span>
-        </p>
-      </div>
-    </div>
+  <p class="command-line">
+    <span class="prompt">$</span> ls -la skills/
+  </p>
+
+  <div class="skills-list">
+    <p
+      v-for="skill in skills"
+      :key="skill.name"
+      class="skill-item"
+    >
+      <span class="permissions">
+        {{ skill.tags.includes('frontend') ? 'drwxr-xr-x' : 'drwxr-x---' }}
+      </span>
+
+      <span class="owner">
+        {{ skill.tags.includes('frontend')
+          ? 'frontend'
+          : skill.tags.includes('backend')
+          ? 'backend'
+          : 'devops'
+        }}
+      </span>
+
+      <span class="date">Jan 22 2026</span>
+
+      <span class="filename">
+        {{ skill.name.toLowerCase().replace(/\s+/g, '_') }}
+      </span>
+    </p>
+  </div>
+</div>
   </section>
 </template>
 
@@ -68,45 +87,56 @@ defineEmits(['skill-hover', 'skill-click'])
 const clickedSkills = ref([])
 
 const skills = ref([
+  
+  {
+    name: 'PHP',
+    level: 95,
+    tags: ['laravel', 'symfony', 'rest-api']
+  },
   {
     name: 'Vue.js',
-    level: 95,
-    tags: ['frontend', 'spa', 'composition-api']
+    level: 90,
+    tags: ['vue3', 'composition-api', 'component-architecture', 'spa']
   },
   {
     name: 'JavaScript',
-    level: 90,
-    tags: ['es6+', 'async', 'functional']
-  },
-  {
-    name: 'Node.js',
-    level: 85,
-    tags: ['backend', 'api', 'express']
+    level: 88,
+    tags: ['es6+', 'async-await', 'functional', 'clean-code']
   },
   {
     name: 'TypeScript',
-    level: 80,
-    tags: ['types', 'oop', 'interfaces']
+    level: 85,
+    tags: ['backend', 'adonisjs', 'oop', 'interfaces']
   },
   {
-    name: 'CSS/SASS',
+    name: 'Backend Architecture',
+    level: 90,
+    tags: ['mvc', 'repository-pattern', 'solid', 'microservices']
+  },
+  {
+    name: 'Databases (MySQL)',
     level: 88,
-    tags: ['responsive', 'animations', 'flexbox']
+    tags: ['query-optimization', 'schema-design', 'transactions', 'orm']
   },
   {
-    name: 'Git',
+    name: 'Testing',
+    level: 85,
+    tags: ['phpunit', 'e2e', 'integration-testing']
+  },
+  {
+    name: 'Git & CI/CD',
     level: 92,
-    tags: ['version-control', 'collaboration']
-  },
-  {
-    name: 'MongoDB',
-    level: 75,
-    tags: ['nosql', 'database', 'mongoose']
+    tags: ['github-actions', 'azure-devops', 'code-review', 'branching']
   },
   {
     name: 'Docker',
-    level: 70,
-    tags: ['containers', 'devops', 'deployment']
+    level: 75,
+    tags: ['containers', 'local-dev', 'deployment']
+  },
+  {
+    name: 'Cloud & DevOps',
+    level: 78,
+    tags: ['aws', 'ec2', 's3', 'rds', 'pipelines']
   }
 ])
 

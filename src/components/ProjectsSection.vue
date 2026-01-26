@@ -112,32 +112,31 @@ const filters = ['All', 'Web', 'Mobile', 'API', 'Open Source']
 const projects = ref([
   {
     id: 1,
-    name: 'EcommerceApp',
-    description: 'Plataforma de e-commerce completa con panel de administración',
-    technologies: ['Vue.js', 'Node.js', 'MongoDB', 'Stripe'],
-    category: 'Web',
+    name: 'Python Pipeline via SSH',
+    description: 'A modular Python automation pipeline that uses SSH to perform repeatable DevOps tasks',
+    technologies: ['Paramiko', 'Python', 'Unix'],
+    category: 'Open Source',
     status: 'completed',
-    github: '#',
-    demo: '#'
+    github: 'https://github.com/K1ng0hat/pipeline-pythonssh',
   },
   {
     id: 2,
-    name: 'TaskManager',
-    description: 'Aplicación de gestión de tareas con colaboración en tiempo real',
-    technologies: ['Vue 3', 'Socket.io', 'Express', 'PostgreSQL'],
+    name: 'CampoVIVO',
+    description: 'CampoVivo is a complete SaaS application for the efficient management of cattle livestock, specifically designed for Colombian ranchers',
+    technologies: ['Vue 3', 'Springboot', 'Express', 'PostgreSQL'],
     category: 'Web',
     status: 'in-progress',
-    github: '#',
-    demo: '#'
+    github: 'https://github.com/K1ng0hat/campovivo',
+    demo: null
   },
   {
     id: 3,
-    name: 'WeatherAPI',
-    description: 'API REST para consulta de datos meteorológicos',
-    technologies: ['Node.js', 'Express', 'Redis', 'Docker'],
+    name: 'APIguard',
+    description: 'Plataforma ligera para el monitoreo automatizado y seguro de APIs empresariales.',
+    technologies: ['JavaScript', 'CSS', 'HTML', 'Docker'],
     category: 'API',
     status: 'completed',
-    github: '#',
+    github: 'https://github.com/K1ng0hat/apiguard',
     demo: null
   },
   {
@@ -150,27 +149,8 @@ const projects = ref([
     github: '#',
     demo: '#'
   },
-  {
-    id: 5,
-    name: 'ChatApp',
-    description: 'Aplicación de chat en tiempo real con encriptación',
-    technologies: ['React Native', 'Node.js', 'WebRTC'],
-    category: 'Mobile',
-    status: 'in-progress',
-    github: '#',
-    demo: null
-  },
-  {
-    id: 6,
-    name: 'BlogCMS',
-    description: 'Sistema de gestión de contenidos para blogs',
-    technologies: ['Vue.js', 'Nuxt', 'Markdown', 'Netlify'],
-    category: 'Web',
-    status: 'completed',
-    github: '#',
-    demo: '#'
-  }
-])
+  
+]) 
 
 const filteredProjects = computed(() => {
   if (activeFilter.value === 'All') {
