@@ -141,13 +141,12 @@ const projects = ref([
   },
   {
     id: 4,
-    name: 'PortfolioBuilder',
+    name: 'PortfolioBuilder - NO ACCESS YET',
     description: 'Constructor de portfolios con plantillas personalizables',
     technologies: ['Vue.js', 'TailwindCSS', 'Firebase'],
     category: 'Open Source',
-    status: 'completed',
-    github: '#',
-    demo: '#'
+    status: 'in-progress'
+
   },
   
 ]) 

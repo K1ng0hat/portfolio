@@ -2,24 +2,24 @@
 
 Portfolio moderno con diseño inspirado en terminal de programación, fondo negro y tipografía amarilla estilo código.
 
-## 🚀 Características
+##  Características
 
-- ✨ Diseño de terminal/matriz con lluvia de código
-- 🎨 Fondo negro con tipografía amarilla estilo código
-- ⌨️ Efectos de escritura (typing effect)
-- 🎯 Sección de skills con animaciones y barras de progreso
-- 📁 Galería de proyectos con filtros
-- 🔊 Sistema de sonidos interactivos
-- 📱 Diseño responsive
+- Diseño de terminal/matriz con lluvia de código
+-  Fondo negro con tipografía amarilla estilo código
+-  Efectos de escritura (typing effect)
+-  Sección de skills con animaciones y barras de progreso
+-  Galería de proyectos con filtros
+-  Sistema de sonidos interactivos
+-  Diseño responsive
 
-## 🛠️ Tecnologías
+##  Tecnologías
 
 - Vue.js 3 (Composition API)
 - Vite
 - CSS3 con animaciones
 - Fira Code (tipografía de programación)
 
-## 📦 Instalación
+##  Instalación
 
 ```bash
 # Instalar dependencias
@@ -32,7 +32,7 @@ npm run dev
 npm run build
 ```
 
-## 🎵 Agregar Sonidos
+##  Agregar Sonidos
 
 1. Coloca tus archivos de sonido en formato `.mp3` en la carpeta `public/sounds/`
 2. Archivos necesarios:
@@ -45,7 +45,7 @@ Recursos para sonidos gratuitos:
 - [Zapsplat.com](https://www.zapsplat.com)
 - [Mixkit.co](https://mixkit.co/free-sound-effects/)
 
-## ✏️ Personalización
+##  Personalización
 
 ### Cambiar tu información:
 
@@ -76,7 +76,7 @@ En [src/style.css](src/style.css), modifica las variables CSS:
 }
 ```
 
-## 📁 Estructura del Proyecto
+##  Estructura del Proyecto
 
 ```
 portfolio/
@@ -96,7 +96,7 @@ portfolio/
 └── vite.config.js
 ```
 
-## 🎨 Efectos Visuales
+##  Efectos Visuales
 
 - **Lluvia de código**: Efecto de caracteres cayendo en el fondo
 - **Efecto de escritura**: El nombre se escribe letra por letra
@@ -104,17 +104,15 @@ portfolio/
 - **Barras de progreso**: Animadas al hacer click en las skills
 - **Glitch effect**: Sombras de texto con efecto glitch
 
-## 🎮 Interactividad
+##  Interactividad
 
 - Click en las skills para ver la barra de progreso animarse
 - Hover sobre elementos para efectos visuales y sonoros
 - Filtros de proyectos por categoría
 - Enlaces a GitHub y demos de proyectos
 
-## 📝 Licencia
-
-Este proyecto es de código abierto y está disponible para ser usado libremente.
+## Recuerde instalar npm install -D gh-pages
 
 ---
 
-Desarrollado con ❤️ y ☕
+Desarrollado con ❤️ y Black Viper

@@ -99,6 +99,11 @@ const skills = ref([
     tags: ['vue3', 'composition-api', 'component-architecture', 'spa']
   },
   {
+    name: 'Python',
+    level: 88,
+    tags: ['flask', 'task-automation', 'fast-api', 'performance']
+  },
+  {
     name: 'JavaScript',
     level: 88,
     tags: ['es6+', 'async-await', 'functional', 'clean-code']
