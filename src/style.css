@@ -647,3 +647,150 @@ footer {
     animation: none !important;
   }
 }
+
+/* Featured live applications */
+.restiq {
+  background: #1c3527;
+  color: #d7ed9a;
+}
+.florida {
+  background: #252a2c;
+  color: #fa7e36;
+}
+.preview-frame {
+  position: absolute;
+  inset: 32px 34px 41px;
+  border: 1px solid currentColor;
+  border-radius: 8px 8px 0 0;
+  transform: translateY(14px) rotate(-3deg);
+  background: #112218;
+  box-shadow: 0 20px 40px #0005;
+  transition: transform 0.3s;
+}
+.florida .preview-frame {
+  background: #171b1e;
+  transform: translateY(14px) rotate(3deg);
+}
+.project-card:hover .preview-frame {
+  transform: translateY(8px) rotate(0);
+}
+.preview-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 12px;
+  border-bottom: 1px solid #ffffff25;
+  font: 8px var(--mono);
+  letter-spacing: 1px;
+}
+.preview-toolbar span:first-child {
+  font-size: 6px;
+  letter-spacing: 3px;
+}
+.preview-body {
+  padding: 18px 22px;
+}
+.preview-kicker {
+  font: 7px var(--mono);
+  letter-spacing: 2px;
+}
+.preview-body strong {
+  display: block;
+  font-size: 62px;
+  line-height: 1;
+  letter-spacing: -4px;
+  margin: 4px 0 8px;
+}
+.florida .preview-body strong {
+  font-size: 49px;
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+.preview-rule {
+  width: 55px;
+  height: 3px;
+  background: currentColor;
+  margin-bottom: 10px;
+}
+.preview-detail {
+  font-size: 10px;
+  letter-spacing: 0.5px;
+}
+.restiq .visual-label,
+.florida .visual-label {
+  font-size: 8px;
+  bottom: 13px;
+}
+.restiq .visual-category,
+.florida .visual-category {
+  top: 13px;
+  font-size: 8px;
+}
+.language-select {
+  color: var(--accent);
+  border: 1px solid var(--line);
+  background: #1e221b;
+  padding: 9px 10px;
+  font: 12px var(--mono);
+  border-radius: 4px;
+  margin-left: 22px;
+  cursor: pointer;
+}
+.site-header nav {
+  margin-left: auto;
+}
+.language-select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+html[lang="en"] h1 {
+  font-size: clamp(58px, 6vw, 88px);
+}
+@media (max-width: 700px) {
+  .language-select {
+    padding: 7px 4px;
+    margin-left: 12px;
+    font-size: 11px;
+  }
+  .site-header nav {
+    gap: 12px;
+    font-size: 11px;
+  }
+  .wordmark {
+    font-size: 28px;
+  }
+  .preview-frame {
+    inset: 29px 23px 36px;
+  }
+  .preview-body {
+    padding: 14px 18px;
+  }
+  .preview-body strong {
+    font-size: 57px;
+  }
+  .florida .preview-body strong {
+    font-size: 45px;
+  }
+  .preview-detail {
+    font-size: 9px;
+  }
+  html[lang="en"] h1 {
+    font-size: clamp(50px, 11vw, 74px);
+  }
+}
+.preview-body {
+  padding: 12px 22px;
+}
+.preview-kicker {
+  display: block;
+}
+.preview-body strong {
+  font-size: 50px;
+  margin: 7px 0;
+}
+.preview-detail {
+  display: none;
+}
+.preview-rule {
+  margin-bottom: 0;
+}

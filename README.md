@@ -38,3 +38,9 @@ En GitHub, configura Pages para publicar desde la raíz de la rama `gh-pages`. E
 - `public/sounds/profile.jpg`: fotografía personal existente.
 
 La interfaz respeta la preferencia de movimiento reducido, permite navegación por teclado y no reproduce audio.
+
+## Idiomas
+
+El portfolio detecta español o inglés a partir de las preferencias del navegador. Si ninguna coincide, utiliza inglés. El selector ES/EN guarda la elección en este navegador; no utiliza geolocalización ni servicios externos. Textos y metadatos se mantienen en `src/i18n.js`.
+
+Restiq y Florida Drilling & Concrete son los proyectos destacados con enlaces a sus demos en Railway. Las tarjetas incluyen composiciones gráficas inspiradas en su identidad visual.
