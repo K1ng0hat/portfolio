@@ -1,4 +1,5 @@
 <script setup>
+import { t } from "../i18n";
 const groups = [
   {
     number: "01",
@@ -50,18 +51,23 @@ const groups = [
   <section id="stack" class="skills-section" aria-labelledby="stack-title">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">02 / HERRAMIENTAS & ENFOQUE</p>
+        <p class="eyebrow">{{ t("02 / HERRAMIENTAS & ENFOQUE") }}</p>
         <h2 id="stack-title">
-          El stack detrás<br />de cada <span>solución.</span>
+          {{ t("El stack detrás") }}<br />{{ t("de cada") }}
+          <span>{{ t("solución.") }}</span>
         </h2>
       </div>
-      <p>La herramienta correcta.<br />Una base bien construida.</p>
+      <p>
+        {{ t("La herramienta correcta.") }}<br />{{
+          t("Una base bien construida.")
+        }}
+      </p>
     </div>
     <div class="skill-groups">
       <article v-for="group in groups" :key="group.number" class="skill-group">
         <span class="skill-number">{{ group.number }} /</span>
-        <h3>{{ group.title }}</h3>
-        <p>{{ group.description }}</p>
+        <h3>{{ t(group.title) }}</h3>
+        <p>{{ t(group.description) }}</p>
         <ul class="tech-tags">
           <li v-for="technology in group.technologies" :key="technology">
             {{ technology }}

@@ -1,7 +1,32 @@
 <script setup>
+import { t } from "../i18n";
 import { computed, ref } from "vue";
 const activeFilter = ref("Todos");
 const projects = [
+  {
+    name: "Restiq",
+    category: "Web",
+    status: "Demo disponible",
+    description:
+      "POS para restaurantes que conecta salón, cocina y caja, con acceso del equipo mediante PIN. MVP con pagos simulados.",
+    technologies: ["POS", "Restaurantes", "Railway"],
+    demo: "https://restiq-production.up.railway.app/",
+    visual: "restiq",
+    mark: "r.",
+    label: "TU RESTAURANTE, EN SINTONÍA.",
+  },
+  {
+    name: "Florida Drilling & Concrete",
+    category: "Web",
+    status: "Demo disponible",
+    description:
+      "Sitio corporativo bilingüe para servicios de perforación y corte de concreto en Florida. Servicios, proyectos y contacto directo en una experiencia adaptable.",
+    technologies: ["Web corporativa", "ES / EN", "Railway"],
+    demo: "https://florida-drilling-production.up.railway.app/",
+    visual: "florida",
+    mark: "FDC",
+    label: "PRECISIÓN EN CADA DETALLE.",
+  },
   {
     name: "CampoVIVO",
     category: "Web",
@@ -26,29 +51,6 @@ const projects = [
     mark: "{ }",
     label: "OBSERVAR. DETECTAR. ACTUAR.",
   },
-  {
-    name: "Python Pipeline via SSH",
-    category: "Open Source",
-    status: "Completado",
-    description:
-      "Pipeline modular para automatizar tareas DevOps repetibles a través de conexiones SSH.",
-    technologies: ["Python", "Paramiko", "Unix"],
-    github: "https://github.com/K1ng0hat/pipeline-pythonssh",
-    visual: "python",
-    mark: ">_",
-    label: "MENOS REPETICIÓN. MÁS AUTOMATIZACIÓN.",
-  },
-  {
-    name: "PortfolioBuilder",
-    category: "Open Source",
-    status: "En desarrollo",
-    description:
-      "Constructor de portfolios con plantillas personalizables. Un espacio propio para mostrar lo que construyes.",
-    technologies: ["Vue.js", "Tailwind CSS", "Firebase"],
-    visual: "builder",
-    mark: "[p]",
-    label: "TU TRABAJO, TU ESPACIO.",
-  },
 ];
 const filters = [
   "Todos",
@@ -69,12 +71,22 @@ const filteredProjects = computed(() =>
   >
     <div class="section-heading">
       <div>
-        <p class="eyebrow">01 / PROYECTOS SELECCIONADOS</p>
-        <h2 id="projects-title">Ideas que toman <span>forma.</span></h2>
+        <p class="eyebrow">{{ t("01 / PROYECTOS SELECCIONADOS") }}</p>
+        <h2 id="projects-title">
+          {{ t("Ideas que toman") }} <span>{{ t("forma.") }}</span>
+        </h2>
       </div>
-      <p>Una selección de aplicaciones,<br />herramientas y experimentos.</p>
+      <p>
+        {{ t("Una selección de aplicaciones,") }}<br />{{
+          t("herramientas y experimentos.")
+        }}
+      </p>
     </div>
-    <div class="projects-filter" role="group" aria-label="Filtrar proyectos">
+    <div
+      class="projects-filter"
+      role="group"
+      :aria-label="t('Filtrar proyectos')"
+    >
       <button
         v-for="filter in filters"
         :key="filter"
@@ -82,14 +94,14 @@ const filteredProjects = computed(() =>
         :class="{ active: activeFilter === filter }"
         @click="activeFilter = filter"
       >
-        {{ filter
+        {{ t(filter)
         }}<span v-if="filter === 'Todos'">
           / {{ projects.length.toString().padStart(2, "0") }}</span
         >
       </button>
     </div>
     <p class="sr-only" role="status">
-      {{ filteredProjects.length }} proyectos visibles
+      {{ filteredProjects.length }} {{ t("proyectos visibles") }}
     </p>
     <div class="projects-grid">
       <article
@@ -99,33 +111,63 @@ const filteredProjects = computed(() =>
       >
         <div :class="['project-visual', project.visual]" aria-hidden="true">
           <div class="visual-grid"></div>
-          <span class="visual-category">{{ project.category }}</span
-          ><span class="visual-mark">{{ project.mark }}</span
-          ><span class="visual-label">{{ project.label }}</span>
+          <div v-if="project.demo" class="preview-frame">
+            <div class="preview-toolbar">
+              <span>{{ t("● ● ●") }}</span
+              ><span>{{
+                project.visual === "restiq" ? "restiq.app" : "florida.drilling"
+              }}</span
+              ><span>↗</span>
+            </div>
+            <div class="preview-body">
+              <span class="preview-kicker">{{
+                project.visual === "restiq"
+                  ? "RESTAURANT OPERATIONS"
+                  : "DRILLING & CONCRETE"
+              }}</span
+              ><strong>{{ project.mark }}</strong>
+              <div class="preview-rule"></div>
+              <span class="preview-detail">{{
+                t(
+                  project.visual === "restiq"
+                    ? "Salón. Cocina. Caja."
+                    : "Perforación. Corte. Precisión.",
+                )
+              }}</span>
+            </div>
+          </div>
+          <span class="visual-category">{{ t(project.category) }}</span
+          ><span v-if="!project.demo" class="visual-mark">{{
+            project.mark
+          }}</span
+          ><span class="visual-label">{{ t(project.label) }}</span>
         </div>
         <div class="project-content">
           <div class="project-meta">
-            <span>{{ project.category }}</span
-            ><span :class="{ complete: project.status === 'Completado' }"
-              >● {{ project.status }}</span
+            <span>{{ t(project.category) }}</span
+            ><span :class="{ complete: project.status !== 'En desarrollo' }"
+              >● {{ t(project.status) }}</span
             >
           </div>
           <h3>{{ project.name }}</h3>
-          <p>{{ project.description }}</p>
-          <ul class="tech-tags" aria-label="Tecnologías">
-            <li v-for="tech in project.technologies" :key="tech">{{ tech }}</li>
+          <p>{{ t(project.description) }}</p>
+          <ul class="tech-tags" :aria-label="t('Tecnologías')">
+            <li v-for="tech in project.technologies" :key="tech">
+              {{ t(tech) }}
+            </li>
           </ul>
           <a
-            v-if="project.github"
+            v-if="project.demo || project.github"
             class="project-link"
-            :href="project.github"
+            :href="project.demo || project.github"
             target="_blank"
             rel="noopener noreferrer"
-            :aria-label="`Ver ${project.name} en GitHub`"
-            >Ver repositorio <span aria-hidden="true">↗</span></a
-          ><span v-else class="project-pending"
-            >Repositorio aún no disponible</span
-          >
+            :aria-label="`${t(project.demo ? 'Abrir demo de' : 'Ver repositorio de')} ${project.name}`"
+            >{{ t(project.demo ? "Explorar demo" : "Ver repositorio") }}
+            <span aria-hidden="true">↗</span></a
+          ><span v-else class="project-pending">{{
+            t("Repositorio aún no disponible")
+          }}</span>
         </div>
       </article>
     </div>
